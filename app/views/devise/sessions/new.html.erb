@@ -1,26 +1,68 @@
-<h2>Log in</h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<section>
+  <div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center no-gutters">
+      <div class="col-12 col-md-6 col-lg-4 py-8 py-md-11">
+        <!-- Heading -->
+        <h1 class="mb-0 font-weight-bold">
+          Se connecter
+        </h1>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <!-- Text -->
+        <p class="mb-6 text-muted">
+          À toi les photos de chats par milliers.
+        </p>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+        <!-- Form -->
+        <%= form_for(resource, :html => {:class => 'mb-6'}, as: resource_name, url: session_path(resource_name)) do |f| %>
+          
+          <div class="form-group mb-5">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+          <div class="form-group mb-5">
+            <%= f.label "Mot de passe" %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </div>
 
-<%= render "devise/shared/links" %>
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group mb-5">
+              <%= f.check_box :remember_me %>
+              <%= f.label "Souvenez-vous de moi" %>
+            </div>
+          <% end %>
+
+
+          <!-- Submit -->
+          <div class="actions">
+            <%= f.submit "Connecte-toi", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+
+        </form>
+
+        <p class="mb-0 font-size-sm text-muted">
+          Tu n'as pas encore de compte chez nous ? <%= link_to "Inscris-toi", new_user_registration_path %>
+        </p>
+
+        <p class="mt-2 font-size-sm text-muted">
+          Tu as oublié ton mot de passe ? <%= link_to "Mot de passe oublié", new_user_password_path %>
+        </p>
+
+      </div>
+      <div class="col-lg-7 offset-lg-1 align-self-stretch d-none d-lg-block">
+
+        <!-- Image -->
+        <div class="h-100 w-cover bg-cover" style="background-image: url(https://images.unsplash.com/photo-1532386236358-a33d8a9434e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1278&q=80);"></div>
+        
+        <!-- Shape -->
+        <div class="shape shape-left shape-fluid-y svg-shim text-light">
+          <svg viewBox="0 0 100 1544" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v386l-50 772v386H0V0z" fill="currentColor"/></svg>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</section>

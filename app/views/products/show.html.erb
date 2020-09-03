@@ -1,0 +1,74 @@
+<!--================ View products#show ==============================================-->
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-12 col-md-5">
+
+          <!-- Images -->
+          <section class="pb-8 pt-md-12 pb-md-10">
+            <%= image_tag @product.url, class: "img-fluid rounded card lift lift-lg shadow-light-lg", alt: "..." %>
+          </section>
+        </div>
+
+        <div class="col-12 col-md-5 position-md-sticky d-flex align-items-center vh-md-100" style="top: 0;">
+
+          <!-- Sidebar -->
+          <aside class="py-8 py-md-10">
+
+            <!-- Preheading -->
+            <%= link_to category_path(@product.category.id), class: "badge badge-pill badge-primary-soft mb-2" do %>
+              <span class="h6 text-uppercase font-weight-bold"><%= @product.category.name %></span>
+            <%end%>
+
+            <!-- Text -->
+            <p class="font-size-lg mb-7 text-muted">
+              <%= @product.description %>
+            </p>
+
+            <!-- List group -->
+            <ul class="list-group list-group-flush mt-5">
+
+              <li class="list-group-item mt-5">
+
+                <!-- Heading -->
+                <h6 class="d-flex mb-0 text-uppercase">
+                  Prénom <span class="ml-auto"><%= @product.name %></span>
+                </h6>
+              </li>
+
+              <li class="list-group-item">
+
+                <!-- Heading -->
+                <h6 class="d-flex mb-0 text-uppercase">
+                  Catégorie <span class="ml-auto"><%= @product.category.name %></span>
+                </h6>
+              </li>
+
+              <li class="list-group-item">
+                <!-- Heading -->
+                <h5 class="d-flex mb-3 text-uppercase">
+                  Prix <span class="ml-auto"><%= @product.price %> €</span>
+                </h5>
+              </li>
+            </ul>
+
+          <!--Ajouter au panier-->
+          <% if user_signed_in? %>
+          <%= link_to "Au panier !", product_carts_path(product_id: @product.id), method: :post, class: 'btn btn-success btn-pill btn-sm ml-2 mr-0 text-light', remote: true %>
+          <% else %>
+          <%= link_to "Au panier !", new_user_session_path, class: 'btn btn-success btn-pill btn-sm ml-2 mr-0 text-light' %>
+          <% end %>
+        </aside>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+      <div class="shape shape-bottom shape-fluid-x svg-shim text-light">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+      </div>
+    </div>

@@ -1,0 +1,13 @@
+Bonjour <%= @admin.email %> !
+
+---------------------------------------------------------------------
+
+Le client <%= @user.email %> vient de passer la commande suivante :
+
+    <% @products_ordered.each do |item| %>
+      <%= item.name %> : <%= item.price %> €
+    <% end %>
+
+---------------------------------------------------------------------
+
+Encore un gros pigeon !

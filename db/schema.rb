@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_161324) do
+ActiveRecord::Schema.define(version: 2020_08_31_193012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_161324) do
     t.bigint "cart_id"
     t.bigint "product_id"
     t.integer "quantity"
-    t.float "total_price"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_product_carts_on_cart_id"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_161324) do
     t.bigint "order_id"
     t.bigint "product_id"
     t.integer "quantity"
-    t.float "total_price"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_product_orders_on_order_id"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_161324) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

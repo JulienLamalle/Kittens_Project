@@ -1,0 +1,12 @@
+<h1>Bonjour <%= @user.email %> !</h1>
+<ul>
+  Nous avons bien reçu ta commande dont voici le récapitulatif :
+  <ol>
+    <% @products_ordered.each do |item| %>
+      <li><%= item.name %> : <%= item.price %> €    <%= link_to "--> voici ton lien de téléchargement", item.url %></li>
+    <% end %>
+  </ol>
+</ul>
+<p>
+  Un grand merci pour ces achats !
+</p>

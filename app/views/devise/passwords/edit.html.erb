@@ -1,25 +1,59 @@
-<h2>Change your password</h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+<section>
+  <div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center no-gutters">
+      <div class="col-12 col-md-6 col-lg-4 py-8 py-md-11">
+        <!-- Heading -->
+        <h1 class="mb-0 font-weight-bold">
+          Réinitialiser votre mot de passe !
+        </h1>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+        <!-- Text -->
+        <p class="mb-6 text-muted">
+          À toi les photos de chats par milliers.
+        </p>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <!-- Form -->
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, :class => 'mb-5'}) do |f| %>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+          <%= f.hidden_field :reset_password_token %>
+
+          <div class="form-group mb-5">
+            <%= f.label :password, "Votre nouveau mot de passe" %><br />
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> caractères minimum)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+          <div class="form-group mb-5">
+            <%= f.label :password_confirmation, "Confirmez votre mot de passe" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Changer mon mot de passe", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+        <p class="mt-5 font-size-sm text-muted">
+          Tu n'as pas encore de compte chez nous ? <%= link_to "Inscris-toi", new_user_registration_path %>
+        </p>
+
+      </div>
+      <div class="col-lg-7 offset-lg-1 align-self-stretch d-none d-lg-block">
+
+        <!-- Image -->
+        <div class="h-100 w-cover bg-cover" style="background-image: url(https://www.sickchirpse.com/wp-content/uploads/2019/05/Grumpy-Cat.jpg);"></div>
+        
+        <!-- Shape -->
+        <div class="shape shape-left shape-fluid-y svg-shim text-light">
+          <svg viewBox="0 0 100 1544" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v386l-50 772v386H0V0z" fill="currentColor"/></svg>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</section>

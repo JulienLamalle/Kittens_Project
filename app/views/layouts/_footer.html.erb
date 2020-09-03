@@ -1,0 +1,69 @@
+<!-- FOOTER
+================================================== -->
+<footer class="py-8 py-md-11 bg-gray-200">
+  <div class="container">
+    <div class="row">
+      <div class="col-4 col-md-4 col-lg-3">
+        <%= image_tag "icons/cat/paw.svg", class: "footer-brand img-fluid mb-2", alt: "footer_brand", style: "height: 30px" %>
+        <!-- Text -->
+        <p class="text-gray-700 mb-2">
+          <strong>Pour la passion des chats.</strong>
+        </p>
+
+        <!-- Social -->
+        <div class="d-flex justify-content-between">
+          <%= image_tag "icons/social/facebook.svg", class: "footer-brand img-fluid mb-2", alt: "footer_brand", style: "height: 25px" %>
+          <%= image_tag "icons/social/instagram.svg", class: "footer-brand img-fluid mb-2", alt: "footer_brand", style: "height: 25px" %>
+          <%= image_tag "icons/social/twitter.svg", class: "footer-brand img-fluid mb-2", alt: "footer_brand", style: "height: 25px" %>
+          <%= image_tag "icons/social/linkedin.svg", class: "footer-brand img-fluid mb-2", alt: "footer_brand", style: "height: 25px" %>
+          <%= image_tag "icons/social/pinterest.svg", class: "footer-brand img-fluid mb-2", alt: "footer_brand", style: "height: 25px" %>
+        </div>
+
+        <!-- display here social buttons -->
+
+      </div>
+      <div class="col-4 col-md-4 col-lg-4">
+
+        <!-- Heading -->
+        <h6 class="font-weight-bold text-uppercase text-gray-700">
+          Toujours plus de photos
+        </h6>
+
+        <!-- List -->
+        <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+          <li class="mb-3">
+          <%= link_to "Une très jolie chatoune", "https://pictures.kitties.netlib.re/jirafeau/f.php?h=0JEuWpbR&p=1", class: "text-reset" %>
+          </li>
+          <li class="mb-3">
+          <%= link_to "Des gratouilles !", "https://pictures.kitties.netlib.re/jirafeau/f.php?h=3zjCLSSu&p=1", class: "text-reset" %>
+          </li>
+        </ul>
+
+      </div>
+      <div class="col-4 col-md-4 col-lg-4">
+
+        <!-- Heading -->
+        <h6 class="font-weight-bold text-uppercase text-gray-700">
+          Informations
+        </h6>
+
+        <!-- List -->
+        <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+          <li class="mb-3">
+            <%= link_to "À propos", static_pages_path ,class: "text-reset" %>
+          </li>
+          <li class="mb-3">
+            <%= link_to "Notre kit UI", kituis_path, class: "text-reset" %>
+          </li>
+          <li class="mb-3">
+            <%= link_to "Notre formation", "https://www.thehackingproject.org/" ,class: "text-reset" %>
+          </li>
+        </ul>
+
+      </div>
+
+    </div> <!-- / .row -->
+    <p class="list-unstyled text-muted mt-5 mb-0 text-center">Copyright Lol Astéroïde 2020.</p>
+  </div> <!-- / .container -->
+
+</footer>

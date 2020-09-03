@@ -1,16 +1,52 @@
-<h2>Resend confirmation instructions</h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<section>
+  <div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center no-gutters">
+      <div class="col-12 col-md-6 col-lg-4 py-8 py-md-11">
+        <!-- Heading -->
+        <h1 class="mb-0 font-weight-bold">
+          Recevoir à nouveau les insructions de confirmation
+        </h1>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+        <!-- Text -->
+        <p class="mb-6 text-muted">
+          À toi les photos de chats par milliers.
+        </p>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
+        <!-- Form -->
+        <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, :class => 'mb-5'}) do |f| %>
 
-<%= render "devise/shared/links" %>
+
+          <div class="form-group mb-5">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Renvoyer moi mes instructions", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+        <p class="mt-5 font-size-sm text-muted">
+          Tu n'as pas encore de compte chez nous ? <%= link_to "Inscris-toi", new_user_registration_path %>
+        </p>
+
+      </div>
+      <div class="col-lg-7 offset-lg-1 align-self-stretch d-none d-lg-block">
+
+        <!-- Image -->
+        <div class="h-100 w-cover bg-cover" style="background-image: url(https://images.unsplash.com/photo-1568043210943-0e8aac4b9734?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);"></div>
+        
+        <!-- Shape -->
+        <div class="shape shape-left shape-fluid-y svg-shim text-light">
+          <svg viewBox="0 0 100 1544" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v386l-50 772v386H0V0z" fill="currentColor"/></svg>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</section>
+
+
+

@@ -1,7 +1,7 @@
-<header>
+<header id="header">
 
 <!--Navbar-->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom">
     <%= link_to root_path, :class => "navbar-brand" do %>
       <%= image_tag "icons/cat/paw.svg", class: "navbar-brand-img", alt: "..." %>
     <%end%>
@@ -15,13 +15,16 @@
         <li class="nav-item">
           <%= link_to "Accueil", root_path, :class => "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "À propos", static_pages_path, :class => "nav-link" %>
+        </li>
         <% if user_signed_in? %>
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Mon profil
             </a>
             <div class="dropdown-menu " aria-labelledby="navbarDropdown-connexion">
-              <%= link_to "Mon profil", root_path, class: "dropdown-item" %>
+              <%= link_to "Mon profil", user_path(:id => current_user.id), class: "dropdown-item" %>
               <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
@@ -36,6 +39,14 @@
               <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
             </div>
           </li>
+        <% end %>
+        <% if user_signed_in? %>
+        <li class="nav-item justify-content-end">
+          <%= link_to user_cart_path(user_id: current_user.id, id: Cart.where(user_id: current_user.id).last), :class => "nav-link" do %>
+            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+            Mon Panier
+          <% end %>
+        </li>
         <% end %>
       </ul>
     </div>

@@ -1,0 +1,12 @@
+<h1>Bonjour <%= @admin.email %> !</h1>
+<ul>
+  Le client <%= @user.email %> vient de passer la commande suivante :
+  <ol>
+    <% @products_ordered.each do |item| %>
+      <li><%= item.name %> : <%= item.price %> €</li>
+    <% end %>
+  </ol>
+</ul>
+<p>
+  Encore un gros pigeon !
+</p>

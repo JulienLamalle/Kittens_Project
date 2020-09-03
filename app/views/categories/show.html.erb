@@ -1,0 +1,127 @@
+<!-- WELCOME
+================================================== -->
+<section data-jarallax data-speed=".8" class="pt-12 pt-md-14 pb-12 pb-md-15 overlay overlay-black overlay-60 bg-cover jarallax" style="margin-top: -83px; background-image: url(https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1027&q=80);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-10 text-center">
+
+        <!-- Headin -->
+        <h1 class="display-2 font-weight-bold text-white">
+          Les chats.
+        </h1>
+
+        <!-- Text -->
+        <p class="lead text-white-75 mb-4">
+          Et bien, franchement, c'est plutôt mignon. Du coup on vend leurs photos. Voilà voilà. Donne-nous ton argent stp.
+        </p>
+
+        <!-- Badges -->
+        <hr class="border-gray-300 my-6">
+        <p class="text-white-75 mt-5">
+          Produits de la catégorie:
+        </p>
+        <%=link_to category_path(@category.id), class: "badge badge-pill badge-white-soft mr-1 mb-1" do%>
+        <span class="h6 text-uppercase"><%= @category.name %></span>
+        <%end%>
+        <p class="text-white-75 mt-5">
+          Voir une autre catégorie:
+        </p>
+        <nav class="nav justify-content-center">
+          <% @categories.each do |category| %>
+          <% if category != @category %>
+          <%=link_to category_path(category.id), class: "badge badge-pill badge-white-soft mr-1 mb-1" do%>
+          <span class="h6 text-uppercase"><%= category.name %></span>
+          <%end%>
+          <%end%>
+          <% end %>
+        </nav>
+
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</section>
+
+<!-- SHAPE
+================================================== -->
+<div class="position-relative">
+  <div class="shape shape-bottom shape-fluid-x svg-shim text-light">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+  </div>
+</div>
+
+<!--================ Cards =================================================================-->
+
+
+
+<!--Troisième type de cartes-->
+
+<section class="py-8 py-md-11 mt-n10 mt-md-n14">
+  <div class="container">
+    <div class="row" id="portfolio" data-isotope='{"layoutMode": "masonry"}'>
+
+
+      <% @products.each do |product| %>
+
+      <div class="col-12 col-md-6 col-lg-4 ux">
+
+        <!-- Card -->
+        <div class="card shadow-light-lg mb-7">
+          <!-- Image -->
+          <div class="card-zoom">
+            <%= image_tag product.url, class: "card-img", alt: "..." %>
+          </div>
+
+          <!-- Overlay -->
+          <div class="card-img-overlay card-img-overlay-hover">
+            <div class="card-body bg-white">
+
+              <!-- Shape -->
+              <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+              </div>
+
+              <!-- Preheading -->
+              <%= link_to category_path(product.category.id), class: "badge badge-pill badge-primary-soft mb-2" do %>
+              <span class="h6 text-uppercase font-weight-bold"><%= product.category.name %></span>
+              <%end%>
+              <hr>
+              <!-- Text -->
+              <div class="mb-0 text-muted">
+                <h3><%= product.name %></h3>
+                <small>
+                  <%= product.description %>
+                </small>
+              </div>
+
+              <!-- Ajouter au panier -->
+              <hr>
+              <div class="h5 text-uppercase text-muted mb-2 ml-auto">
+                <%= product.price %> €
+                <% if user_signed_in? %>
+                <%= link_to "Au panier !", product_carts_path(product_id: product.id), method: :post, class: 'btn btn-success btn-pill btn-sm ml-2 mr-0 text-light', remote: true %>
+                <% else %>
+                <%= link_to "Au panier !", new_user_session_path, class: 'btn btn-success btn-pill btn-sm ml-2 mr-0 text-light' %>
+                <% end %>
+                <%= link_to product_path(product.id), class: "btn btn-xs btn-rounded-circle btn-secondary ml-1", title: "Voir plus" do %>
+                <%= image_tag "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Ftrycons%2F32%2Fsearch-512.png&f=1&nofb=1"%>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</section>
+
+<!-- SHAPE
+================================================== -->
+<div class="position-relative">
+  <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+  </div>
+</div>

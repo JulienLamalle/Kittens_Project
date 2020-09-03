@@ -1,43 +1,81 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<section>
+  <div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center no-gutters">
+      <div class="col-12 col-md-6 col-lg-4 py-8 py-md-11">
+        <!-- Heading -->
+        <h1 class="mb-0 font-weight-bold">
+          Editer votre compte
+        </h1>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <!-- Text -->
+        <p class="mb-6 text-muted ">
+          Remplissez uniquement les champs que vous souhaitez modifier.
+        </p>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+          <div class="form-group mb-5">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+          <div class="form-group mb-5">
+            <%= f.label "Prénom" %><br />
+            <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+          <div class="form-group mb-5">
+            <%= f.label "Nom" %><br />
+            <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+          <div class="form-group mb-5">
+            <%= f.label "Avatar" %><br />
+            <%= f.text_field :avatar, autocomplete: "avatar", class: "form-control" %>
+          </div>
 
-<h3>Cancel my account</h3>
+          <div class="form-group mb-5">
+            <%= f.label "Mot de passe" %><em><% if @minimum_password_length %><%= " (#{@minimum_password_length} caractères minimum)" %><%end%></em><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            
+          </div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+          <div class="form-group mb-5">
+            <%= f.label "Confirmation de votre mot de passe" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
 
-<%= link_to "Back", :back %>
+          <div class="form-group mb-5">
+            <%= f.label "Mot de passe actuel" %><br />
+            <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Modifier mon compte", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+
+        <p class="mt-5">Tu veux nous quitter ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger",method: :delete %></p>
+
+        <p class="mb-0 font-size-sm text-muted">
+          <%= link_to "Revenir en arrière", :back %>
+        </p>
+
+      </div>
+      <div class="col-lg-7 offset-lg-1 align-self-stretch d-none d-lg-block">
+
+        <!-- Image -->
+        <div class="h-100 w-cover bg-cover" style="background-image: url(https://images.unsplash.com/photo-1555606396-79625d075363?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)"></div>
+        
+        <!-- Shape -->
+        <div class="shape shape-left shape-fluid-y svg-shim text-light">
+          <svg viewBox="0 0 100 1544" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v386l-50 772v386H0V0z" fill="currentColor"/></svg>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</section>

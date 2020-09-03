@@ -1,0 +1,13 @@
+Bonjour <%= @user.email %> !
+
+---------------------------------------------------------------------
+
+Nous avons bien reçu ta commande dont voici le récapitulatif :
+
+    <% @products_ordered.each do |item| %>
+      <%= item.name %> : <%= item.price %> €
+    <% end %>
+
+---------------------------------------------------------------------
+
+Un grand merci pour ces achats !

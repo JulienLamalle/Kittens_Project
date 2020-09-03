@@ -1,29 +1,70 @@
-<h2>Sign up</h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<section>
+  <div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center no-gutters">
+      <div class="col-12 col-md-6 col-lg-4 py-8 py-md-11">
+        <!-- Heading -->
+        <h1 class="mb-0 font-weight-bold">
+          S'inscrire
+        </h1>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <!-- Text -->
+        <p class="mb-6 text-muted">
+          À toi les photos de chats par milliers.
+        </p>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <!-- Form -->
+        <%= form_for(resource, :html => {:class => 'mb-6'}, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+          <!-- Email -->
+          <div class="form-group mb-5">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
 
-<%= render "devise/shared/links" %>
+          <div class="form-group mb-5">
+            <%= f.label "Mot de passe" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> caractères minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+          <!-- Confirm password -->
+          <div class="form-group mb-5">
+            <%= f.label "Mot de passe" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> caractères minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
+          </div>
+
+          <!-- Submit -->
+          <div class="actions">
+            <%= f.submit "Inscris-toi", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+
+        </form>
+
+        <p class="mb-0 font-size-sm text-muted">
+          Tu as déjà un compte chez nous ? <%= link_to "Connecte-toi", new_user_session_path %>
+        </p>
+
+      </div>
+      <div class="col-lg-7 offset-lg-1 align-self-stretch d-none d-lg-block">
+
+        <!-- Image -->
+        <div class="h-100 w-cover bg-cover" style="background-image: url(https://static.pexels.com/photos/617278/pexels-photo-617278.jpeg)"></div>
+        
+        <!-- Shape -->
+        <div class="shape shape-left shape-fluid-y svg-shim text-light">
+          <svg viewBox="0 0 100 1544" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v386l-50 772v386H0V0z" fill="currentColor"/></svg>
+        </div>
+
+      </div>
+    </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</section>

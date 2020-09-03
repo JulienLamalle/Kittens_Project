@@ -4,8 +4,8 @@
 We are a team composed of five loving cats members : Amaury, Juliet, Julien, Benoit and Benjamin. The point of this website was to complete our first group project for a [bootcamp](https://www.thehackingproject.org/). It is a factice marketplace where you can buy picture of little monsters know as kitties.
 <a href="https://www.flaticon.com/free-icon/cat_616430"><img src="https://image.flaticon.com/icons/svg/616/616430.svg" alt="kitty_icon_svg" width="20" height="20" style="max-width:100%;"></a>
 
-Our website on [heroku](https://kittens-project.herokuapp.com).
-
+Our website on [heroku](https://kittens-project.herokuapp.com).  
+(Please don't create an account until 9:am on the 4th of September 2020 !)
 
 ## Functionnalities
 __Without an account you can:__

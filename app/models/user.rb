@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one :cart
   has_many :orders
 
-  after_create :send_user_mail
+  # after_create :send_user_mail
   def send_user_mail
     UserMailer.send_new_user_message(self).deliver
   end

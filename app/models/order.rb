@@ -12,7 +12,7 @@ class Order < ApplicationRecord
   # 2. add every products to the object with the same order_id
   # 3. update the order with the stripe_customer_id -> only then it sends an email
 
-  after_update :order_confirmed
+  # after_update :order_confirmed
 
   def order_confirmed
     OrderMailer.order_confirmed(self).deliver_now
